@@ -1,0 +1,281 @@
+[{
+        "file": "dispatch.bpmn",
+        "process": "0",
+        "structure": {
+            "splits": {
+                "exclusiveGateway": {
+                    "nodes": 1,
+                    "arcs": 3
+                },
+                "parallelGateway": {
+                    "nodes": 1,
+                    "arcs": 3
+                }
+            },
+            "joins": {
+                "exclusiveGateway": {
+                    "nodes": 0,
+                    "arcs": 0
+                },
+                "parallelGateway": {
+                    "nodes": 1,
+                    "arcs": 4
+                }
+            },
+            "uncertainties": {
+                "exclusiveGateway": 1
+            }
+        },
+        "originalMM": 4,
+        "modifiedMM": 5,
+        "suggestion": {
+            "exclusiveGateway": {
+                "splits": {
+                    "nodes": 1,
+                    "arcs": 1
+                },
+                "joins": {
+                    "nodes": 0,
+                    "arcs": 0
+                },
+                "uncertainties": 1
+            },
+            "parallelGateway": {
+                "splits": {
+                    "nodes": 0,
+                    "arcs": 1
+                },
+                "joins": {
+                    "nodes": 0,
+                    "arcs": 1
+                }
+            }
+        },
+        "estimation": {
+            "design": 1.399501390195928,
+            "implementation": 9.09675903627353,
+            "testing": 20.992520852938917,
+            "maintenance": 139.95013901959277
+        }
+    },
+    {
+        "file": "recourse.bpmn",
+        "process": "0",
+        "structure": {
+            "splits": {
+                "exclusiveGateway": {
+                    "nodes": 1,
+                    "arcs": 3
+                },
+                "eventBasedGateway": {
+                    "nodes": 1,
+                    "arcs": 4
+                }
+            },
+            "joins": {
+                "exclusiveGateway": {
+                    "nodes": 1,
+                    "arcs": 3
+                },
+                "eventBasedGateway": {
+                    "nodes": 0,
+                    "arcs": 0
+                }
+            },
+            "uncertainties": {
+                "exclusiveGateway": 1
+            }
+        },
+        "originalMM": 4,
+        "modifiedMM": 5,
+        "suggestion": {
+            "exclusiveGateway": {
+                "splits": {
+                    "nodes": 0,
+                    "arcs": 0
+                },
+                "joins": {
+                    "nodes": 0,
+                    "arcs": 0
+                },
+                "uncertainties": 1
+            },
+            "eventBasedGateway": {
+                "splits": {
+                    "nodes": 1,
+                    "arcs": 1
+                },
+                "joins": {
+                    "nodes": 0,
+                    "arcs": 0
+                }
+            }
+        },
+        "estimation": {
+            "design": 0.8185253743364388,
+            "implementation": 5.320414933186852,
+            "testing": 12.27788061504658,
+            "maintenance": 81.85253743364387
+        }
+    },
+    {
+        "file": "restaurant.bpmn",
+        "process": "0",
+        "structure": {
+            "splits": {
+                "parallelGateway": {
+                    "nodes": 1,
+                    "arcs": 3
+                }
+            },
+            "joins": {
+                "parallelGateway": {
+                    "nodes": 1,
+                    "arcs": 3
+                }
+            },
+            "uncertainties": {}
+        },
+        "originalMM": 0,
+        "modifiedMM": 0,
+        "suggestion": {},
+        "estimation": {}
+    },
+    {
+        "file": "restaurant.bpmn",
+        "process": "1",
+        "structure": {
+            "splits": {},
+            "joins": {},
+            "uncertainties": {}
+        },
+        "originalMM": 0,
+        "modifiedMM": 0,
+        "suggestion": {},
+        "estimation": {}
+    },
+    {
+        "file": "restaurant.bpmn",
+        "process": "2",
+        "structure": {
+            "splits": {
+                "exclusiveGateway": {
+                    "nodes": 1,
+                    "arcs": 3
+                }
+            },
+            "joins": {
+                "exclusiveGateway": {
+                    "nodes": 0,
+                    "arcs": 0
+                }
+            },
+            "uncertainties": {
+                "eventBasedGateway": 1
+            }
+        },
+        "originalMM": 3,
+        "modifiedMM": 4,
+        "suggestion": {
+            "exclusiveGateway": {
+                "splits": {
+                    "nodes": 1,
+                    "arcs": 1
+                },
+                "joins": {
+                    "nodes": 0,
+                    "arcs": 0
+                }
+            },
+            "eventBasedGateway": {
+                "uncertainties": 1
+            }
+        },
+        "estimation": {
+            "design": 0.8185253743364388,
+            "implementation": 5.320414933186852,
+            "testing": 12.27788061504658,
+            "maintenance": 81.85253743364387
+        }
+    },
+    {
+        "file": "scoring.bpmn",
+        "process": "0",
+        "structure": {
+            "splits": {
+                "eventBasedGateway": {
+                    "nodes": 1,
+                    "arcs": 3
+                },
+                "exclusiveGateway": {
+                    "nodes": 0,
+                    "arcs": 0
+                }
+            },
+            "joins": {
+                "eventBasedGateway": {
+                    "nodes": 0,
+                    "arcs": 0
+                },
+                "exclusiveGateway": {
+                    "nodes": 1,
+                    "arcs": 3
+                }
+            },
+            "uncertainties": {}
+        },
+        "originalMM": 6,
+        "modifiedMM": 6,
+        "suggestion": {
+            "eventBasedGateway": {
+                "splits": {
+                    "nodes": 1,
+                    "arcs": 1
+                },
+                "joins": {
+                    "nodes": 0,
+                    "arcs": 0
+                }
+            },
+            "exclusiveGateway": {
+                "splits": {
+                    "nodes": 0,
+                    "arcs": 0
+                },
+                "joins": {
+                    "nodes": 1,
+                    "arcs": 1
+                }
+            }
+        },
+        "estimation": {
+            "design": 1.1071789507376506,
+            "implementation": 7.1966631797947285,
+            "testing": 16.607684261064758,
+            "maintenance": 110.71789507376506
+        }
+    },
+    {
+        "file": "scoring.bpmn",
+        "process": "1",
+        "structure": {
+            "splits": {
+                "exclusiveGateway": {
+                    "nodes": 1,
+                    "arcs": 3
+                }
+            },
+            "joins": {
+                "exclusiveGateway": {
+                    "nodes": 1,
+                    "arcs": 3
+                }
+            },
+            "uncertainties": {}
+        },
+        "originalMM": 0,
+        "modifiedMM": 0,
+        "suggestion": {},
+        "estimation": {}
+    }
+]
