@@ -70,7 +70,7 @@
          <outgoing>sid-12F2D92C-E6AF-4E30-9815-BDB61198AEDF</outgoing>
          <outgoing>sid-97A8BAB2-6FEA-4731-9014-F1999DDCD369</outgoing>
       </exclusiveGateway>
-      <task completionQuantity="1" id="sid-89A25CB6-25A8-423D-BA17-C1A4CC1C6A5E" isForCompensation="false" name="Write package label" startQuantity="1">
+      <task completionQuantity="1" id="sid-89A25CB6-25A8-423D-BA17-C1A4CC1C6A5E" isForCompensation="false" name="Write a package label" startQuantity="1">
          <extensionElements>
             <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffcc"/>
             <signavio:signavioMetaData metaKey="userstory" metaValue="[]"/>
