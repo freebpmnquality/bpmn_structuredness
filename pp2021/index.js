@@ -19,6 +19,9 @@ var gateways = {
 
 var results = [];
 
+var flowErrors = 0;
+var gatewayErrors = 0;
+
 fs.readdirSync(folder).forEach(file => {
     var modelXML = fs.readFileSync(folder + file, "utf8");
 
@@ -26,27 +29,39 @@ fs.readdirSync(folder).forEach(file => {
         if (!err && result.definitions) {
             var processList = Array.isArray(result.definitions.process) ? result.definitions.process : [result.definitions.process];
 
-            var [totalFlows, totalGateways, processLength] = model.prepare(gateways, processList);
+            var processData = model.prepare(gateways, processList);
 
-            var [flowsMismatch, gatewaysMismatch, totalMismatch] = mismatch.calculate(gateways, totalFlows, totalGateways);
+            for (var i in processData) {
+                var [totalFlows, totalGateways, processLength] = processData[i];
 
-            var detectedErrors = errors.detect(gateways, totalFlows, totalGateways);
+                var [flowsMismatch, gatewaysMismatch, totalMismatch] = mismatch.calculate(gateways, totalFlows, totalGateways);
 
-            var resultObj = {
-                file: file,
-                flowsMismatch: flowsMismatch,
-                gatewaysMismatch: gatewaysMismatch,
-                totalMismatch: totalMismatch,
-                detectedErrors: detectedErrors,
-                effort: effort.estimate(processLength, gateways, detectedErrors),
-                recommendations: recommendations.formulate(gateways, detectedErrors)
-            };
+                var detectedErrors = errors.detect(gateways, totalFlows, totalGateways);
 
-            results.push(resultObj);
+                var resultObj = {
+                    file: file,
+                    flowsMismatch: flowsMismatch,
+                    gatewaysMismatch: gatewaysMismatch,
+                    totalMismatch: totalMismatch,
+                    detectedErrors: detectedErrors,
+                    effort: effort.estimate(processLength, gateways, detectedErrors),
+                    recommendations: recommendations.formulate(gateways, detectedErrors)
+                };
 
-            console.log("Processing...", file);
+                if (flowsMismatch > 0) flowErrors++;
+                if (gatewaysMismatch > 0) gatewayErrors++;
+
+                results.push(resultObj);
+
+                console.log("Processing...", file);
+            }
         }
     });
 });
+
+console.log(results.length, "models processed");
+
+console.log(flowErrors, "models with mismatched flows");
+console.log(gatewayErrors, "models with mismatched gateways");
 
 fs.writeFileSync("output.json", JSON.stringify(results), "utf8");
