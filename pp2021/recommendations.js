@@ -7,7 +7,7 @@ exports.formulate = function(gateways, detectedErrors) {
     var recommendations = [];
 
     for (var gatewayType in gateways) {
-        var typeName = gateways[gatewayType].replace("Gateway", "").replace(/([a-z])([A-Z])/g, "$1 $2");
+        var typeName = gateways[gatewayType].replace("Gateway", "").replace(/([a-z])([A-Z])/g, "$1 $2").toLowerCase();
 
         if (detectedErrors.flows[gatewayType] > 0) {
             recommendations.push(recommendationPatterns.flows(typeName));
