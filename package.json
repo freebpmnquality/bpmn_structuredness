@@ -11,6 +11,7 @@
     "license": "CC-BY",
     "dependencies": {
         "dom-parser": "^0.1.6",
+        "xml2js": "^0.4.23",
         "xmldom": "^0.4.0"
     }
 }
