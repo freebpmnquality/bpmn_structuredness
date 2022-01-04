@@ -67,12 +67,12 @@ exports.prepare = function(gateways, processList) {
 
                 var degree = incoming + outgoing;
 
-                if (incoming === 1 && outgoing > 1) {
+                if (outgoing > 1) {
                     totalGateways.split[gatewayType]++;
                     totalFlows.split[gatewayType] += degree;
                 }
 
-                if (incoming > 1 && outgoing === 1) {
+                if (incoming > 1) {
                     totalGateways.join[gatewayType]++;
                     totalFlows.join[gatewayType] += degree;
                 }
