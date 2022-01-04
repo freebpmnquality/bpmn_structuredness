@@ -1,41 +1,43 @@
 exports.prepare = function(gateways, processList) {
-    var totalFlows = {
-        split: {
-            or: 0,
-            xor: 0,
-            and: 0,
-            event: 0,
-            complex: 0
-        },
-        join: {
-            or: 0,
-            xor: 0,
-            and: 0,
-            event: 0,
-            complex: 0
-        }
-    };
-
-    var totalGateways = {
-        split: {
-            or: 0,
-            xor: 0,
-            and: 0,
-            event: 0,
-            complex: 0
-        },
-        join: {
-            or: 0,
-            xor: 0,
-            and: 0,
-            event: 0,
-            complex: 0
-        }
-    };
-
-    var processLength = 0;
+    var processData = [];
 
     for (var i in processList) {
+        var totalFlows = {
+            split: {
+                or: 0,
+                xor: 0,
+                and: 0,
+                event: 0,
+                complex: 0
+            },
+            join: {
+                or: 0,
+                xor: 0,
+                and: 0,
+                event: 0,
+                complex: 0
+            }
+        };
+
+        var totalGateways = {
+            split: {
+                or: 0,
+                xor: 0,
+                and: 0,
+                event: 0,
+                complex: 0
+            },
+            join: {
+                or: 0,
+                xor: 0,
+                and: 0,
+                event: 0,
+                complex: 0
+            }
+        };
+
+        var processLength = 0;
+
         var process = processList[i];
 
         if (!process) continue;
@@ -67,18 +69,20 @@ exports.prepare = function(gateways, processList) {
 
                 var degree = incoming + outgoing;
 
-                if (outgoing > 1) {
+                if (incoming === 1 && outgoing > 1) {
                     totalGateways.split[gatewayType]++;
                     totalFlows.split[gatewayType] += degree;
                 }
 
-                if (incoming > 1) {
+                if (incoming > 1 && outgoing === 1) {
                     totalGateways.join[gatewayType]++;
                     totalFlows.join[gatewayType] += degree;
                 }
             }
         }
+
+        processData.push([totalFlows, totalGateways, processLength]);
     }
 
-    return [totalFlows, totalGateways, processLength];
+    return processData;
 };
