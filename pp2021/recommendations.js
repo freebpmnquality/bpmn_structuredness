@@ -1,7 +1,8 @@
 exports.formulate = function(gateways, detectedErrors) {
     var recommendationPatterns = {
         flows: (gatewayType) => "Flows splitted and joined by " + gatewayType + " gateways do not match",
-        gateways: (gatewayType) => "Split and join " + gatewayType + " gateways do not match"
+        gateways: (gatewayType) => "Split and join " + gatewayType + " gateways do not match",
+        mixed: (gatewayType) => gatewayType + " gateways are neither splits nor joins"
     };
 
     var recommendations = [];
@@ -15,6 +16,10 @@ exports.formulate = function(gateways, detectedErrors) {
 
         if (detectedErrors.gateways[gatewayType] > 0) {
             recommendations.push(recommendationPatterns.gateways(typeName));
+        }
+
+        if (detectedErrors.mixed[gatewayType] > 0) {
+            recommendations.push(recommendationPatterns.mixed(typeName));
         }
     }
 

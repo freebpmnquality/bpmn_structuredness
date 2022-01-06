@@ -33,6 +33,13 @@ exports.prepare = function(gateways, processList) {
                 and: 0,
                 event: 0,
                 complex: 0
+            },
+            mixed: {
+                or: 0,
+                xor: 0,
+                and: 0,
+                event: 0,
+                complex: 0
             }
         };
 
@@ -72,11 +79,11 @@ exports.prepare = function(gateways, processList) {
                 if (incoming === 1 && outgoing > 1) {
                     totalGateways.split[gatewayType]++;
                     totalFlows.split[gatewayType] += degree;
-                }
-
-                if (incoming > 1 && outgoing === 1) {
+                } else if (incoming > 1 && outgoing === 1) {
                     totalGateways.join[gatewayType]++;
                     totalFlows.join[gatewayType] += degree;
+                } else {
+                    totalGateways.mixed[gatewayType]++;
                 }
             }
         }

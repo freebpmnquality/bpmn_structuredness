@@ -21,6 +21,7 @@ var results = [];
 
 var flowErrors = 0;
 var gatewayErrors = 0;
+var mixedErrors = 0;
 
 fs.readdirSync(folder).forEach(file => {
     var modelXML = fs.readFileSync(folder + file, "utf8");
@@ -34,7 +35,7 @@ fs.readdirSync(folder).forEach(file => {
             for (var i in processData) {
                 var [totalFlows, totalGateways, processLength] = processData[i];
 
-                var [flowsMismatch, gatewaysMismatch, totalMismatch] = mismatch.calculate(gateways, totalFlows, totalGateways);
+                var [flowsMismatch, gatewaysMismatch, mixedGateways, totalMismatch] = mismatch.calculate(gateways, totalFlows, totalGateways);
 
                 var detectedErrors = errors.detect(gateways, totalFlows, totalGateways);
 
@@ -42,6 +43,7 @@ fs.readdirSync(folder).forEach(file => {
                     file: file,
                     flowsMismatch: flowsMismatch,
                     gatewaysMismatch: gatewaysMismatch,
+                    mixedGateways: mixedGateways,
                     totalMismatch: totalMismatch,
                     detectedErrors: detectedErrors,
                     effort: effort.estimate(processLength, gateways, detectedErrors),
@@ -50,6 +52,7 @@ fs.readdirSync(folder).forEach(file => {
 
                 if (flowsMismatch > 0) flowErrors++;
                 if (gatewaysMismatch > 0) gatewayErrors++;
+                if (mixedGateways > 0) mixedErrors++;
 
                 results.push(resultObj);
 
@@ -63,5 +66,6 @@ console.log(results.length, "models processed");
 
 console.log(flowErrors, "models with mismatched flows");
 console.log(gatewayErrors, "models with mismatched gateways");
+console.log(mixedErrors, "models with mixed gateways");
 
 fs.writeFileSync("output.json", JSON.stringify(results), "utf8");
