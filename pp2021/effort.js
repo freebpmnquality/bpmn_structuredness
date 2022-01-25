@@ -21,7 +21,7 @@ exports.estimate = function(processLength, gateways, detectedErrors) {
             var sum = 0;
 
             for (var gatewayType in gateways) {
-                sum += detectedErrors.flows[gatewayType] + detectedErrors.gateways[gatewayType];
+                sum += detectedErrors.flows[gatewayType] + detectedErrors.gateways[gatewayType] + detectedErrors.mixed[gatewayType];
             }
 
             return sum;
